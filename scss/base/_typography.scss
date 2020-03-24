@@ -6,3 +6,30 @@
 * {
   box-sizing: border-box;
 }
+
+.grid-wrap{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px minmax(250px, auto) 100px;
+  grid-gap: 5px;
+  height: 100vh;
+  grid-template-areas: 
+    "head"
+    "main"
+    "foot";
+}
+
+header {
+  grid-area: head;
+  background-color: $header-color;
+}
+
+main{
+  grid-area: main;
+  background-color: $base-color;
+}
+
+footer{
+  grid-area: foot;
+  background-color: $footer-color;
+}

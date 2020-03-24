@@ -315,9 +315,32 @@ template {
 * {
   box-sizing: border-box; }
 
+.grid-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px minmax(250px, auto) 100px;
+  grid-gap: 5px;
+  height: 100vh;
+  grid-template-areas: "head" "main" "foot"; }
+
+header {
+  grid-area: head;
+  background-color: #AFADAF; }
+
+main {
+  grid-area: main;
+  background-color: #FEF8FF; }
+
+footer {
+  grid-area: foot;
+  background-color: #EEE9EF; }
+
 /* ============================================= */
 /*              Header                           */
 /* ============================================= */
+header h1 {
+  font-size: 1rem; }
+
 /* ============================================= */
 /*              Main                             */
 /* ============================================= */
