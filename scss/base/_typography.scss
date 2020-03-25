@@ -5,14 +5,15 @@
 
 * {
   box-sizing: border-box;
+  font-family: $base-font;
 }
 
 .grid-wrap{
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 100px minmax(250px, auto) 100px;
+  grid-template-rows: 80px minmax(250px, auto) 100px;
   grid-gap: 5px;
-  height: 100vh;
+  // height: 100vh;
   grid-template-areas: 
     "head"
     "main"
@@ -21,7 +22,8 @@
 
 header {
   grid-area: head;
-  background-color: $header-color;
+  background-color: $base-color;
+
 }
 
 main{
