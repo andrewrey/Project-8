@@ -325,6 +325,9 @@ template {
   grid-template-rows: 80px minmax(250px, auto) 100px;
   grid-gap: 5px;
   grid-template-areas: "head" "main" "foot"; }
+  @media (min-width: 1284px) {
+    .grid-wrap {
+      height: 100vh; } }
 
 header {
   grid-area: head;
@@ -337,6 +340,9 @@ main {
 footer {
   grid-area: foot;
   background-color: #EEE9EF; }
+
+body {
+  position: relative; }
 
 /* ============================================= */
 /*              Header                           */
@@ -352,6 +358,27 @@ header {
   header h1 {
     font-size: 1rem;
     padding-left: 10px; }
+
+/* ============================================= */
+/*              Overlay                          */
+/* ============================================= */
+.modal {
+  width: 40%;
+  margin: 15% auto auto;
+  background-color: whitesmoke;
+  text-align: center;
+  position: relative; }
+  .modal img {
+    border-radius: 50%;
+    height: 90px; }
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); }
 
 /* ============================================= */
 /*              Main                             */

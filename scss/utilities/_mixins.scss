@@ -2,8 +2,8 @@
 /*              Mixins                           */
 /* ============================================= */
 
-@mixin mq {
-  @media (max-width: 768px){
+@mixin mq($bp) {
+  @media (min-width: $bp){
     @content;
   }
 }
