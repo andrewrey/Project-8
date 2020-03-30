@@ -3,20 +3,23 @@
 const empUrl = "https://randomuser.me/api/?results=12";
 const cardHolder = document.querySelector('.card-holder');
 let employees = [];
+let test = 1;
+
+
 
 async function getEmployees(url){
-
   try{
     let response = await fetch(url);
     let jsonResponse = await response.json();
     return jsonResponse;
-  }catch (err){
+  } catch (err){
     throw err;
   }
 }
 
-function createCards (data) {
+function createCards(data){
   employees = data;
+  test = 2;
   let html = '';
   employees.forEach((employee, index)=>{
     html += `
@@ -43,5 +46,3 @@ getEmployees(empUrl)
     console.log(err);
   });
 
-
-console.log(employees);
