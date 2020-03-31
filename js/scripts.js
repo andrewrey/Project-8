@@ -1,6 +1,6 @@
 
 const searchInput = document.querySelector('.container input');
-const empUrl = "https://randomuser.me/api/?results=12";
+const empUrl = "https://randomuser.me/api/?nat=us,gb,ca&results=12";
 const modalCover = document.querySelector('.cover');
 const cardHolder = document.querySelector('.card-holder');
 const prev = document.querySelector('.prev');
@@ -137,7 +137,10 @@ modalCover.addEventListener('click', (e)=>{
 searchInput.addEventListener('keyup', (e)=>{
   let text = e.target.value.toLowerCase();
   let filteredData = employees.filter(employee =>{
-        return employee.location.country.toLowerCase().includes(text);
+        let firstName = employee.name.first.toLowerCase();
+        let lastName = employee.name.last.toLowerCase();
+        let fullName = `${firstName} ${lastName}`;
+        return fullName.includes(text);
       });
   console.log("filtered",filteredData)
   updatedCards(filteredData);
