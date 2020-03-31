@@ -1,9 +1,9 @@
 
 
 const empUrl = "https://randomuser.me/api/?results=12";
+const modalCover = document.querySelector('.cover');
 const cardHolder = document.querySelector('.card-holder');
 let employees = [];
-let test = 1;
 
 
 
@@ -19,7 +19,7 @@ async function getEmployees(url){
 
 function createCards(data){
   employees = data;
-  test = 2;
+  console.log(employees);
   let html = '';
   employees.forEach((employee, index)=>{
     html += `
@@ -28,15 +28,36 @@ function createCards(data){
         <div class="card-text">
           <h2>${employee.name.first} ${employee.name.last}</h2>
           <p>${employee.email}</p>
-          <p><${employee.location.city}/p>
+          <p>${employee.location.city}</p>
         </div>
       </div>
     `;
   });
   cardHolder.innerHTML = html;
-  console.log(employees);
 }
 
+
+function createModal(index){
+  let {name:{first, last}, location:{street:{number, name:streetName }, city, state,country, postcode}, email, dob, phone, picture:{large}} = employees[index];
+  let birthdate = new Date(dob.date);
+  let html = `
+    <div class="modal">
+      <button class="close">X</button>
+      <img src="${large}" alt="head shot of ${first}">
+      <h2>${first} ${last}</h2>
+      <p>${email}</p>
+      <p>${city}</p>
+      <hr>
+      <p>${phone}</p>
+      <p class="address">${number} ${streetName}, ${state} ${postcode}</p>
+      <p>${birthdate.getMonth()}/${birthdate.getDate()}/${birthdate.getFullYear()}</p>
+    </div>
+    
+  `;
+  modalCover.innerHTML = html;
+  modalCover.classList.remove("hidden");
+
+}
 
 getEmployees(empUrl)
   .then(data => data.results)
@@ -46,3 +67,11 @@ getEmployees(empUrl)
     console.log(err);
   });
 
+
+cardHolder.addEventListener('click', (e)=>{
+  if(e.target !== cardHolder){
+    let card = e.target.closest(".card");
+    let index = card.getAttribute('data-index');
+    createModal(index);
+  }
+});
