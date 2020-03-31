@@ -352,10 +352,13 @@ header {
   flex-direction: column; }
   header .container {
     width: 70%;
+    display: flex;
+    justify-content: space-around;
     margin-left: auto;
     margin-right: auto;
     margin-top: auto; }
   header h1 {
+    margin-right: auto;
     font-size: 1rem;
     padding-left: 10px; }
 
