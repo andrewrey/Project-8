@@ -433,7 +433,7 @@ main {
   .card img {
     border-radius: 50%;
     height: 80px;
-    padding-left: 10px; }
+    margin-left: 10px; }
 
 /* ============================================= */
 /*              Footer                           */
