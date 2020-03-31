@@ -75,3 +75,11 @@ cardHolder.addEventListener('click', (e)=>{
     createModal(index);
   }
 });
+
+modalCover.addEventListener('click', (e)=>{
+  
+  if(e.target.className === "close"){
+    console.log('hello');
+    e.target.parentNode.parentNode.classList.add('hidden');
+  }
+});
