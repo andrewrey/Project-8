@@ -42,6 +42,8 @@ function createModal(index){
   let birthdate = new Date(dob.date);
   let html = `
     <div class="modal">
+      <div class="prev">&#8227</div>
+      <div class="next">&#8227</div>
       <button class="close">X</button>
       <img src="${large}" alt="head shot of ${first}">
       <h2>${first} ${last}</h2>

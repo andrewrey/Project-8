@@ -16,7 +16,19 @@
   background-color: whitesmoke;
   text-align: center;
   position: relative;
-  
+  .prev{
+    position: absolute;
+    font-size: 3.5rem;
+    top: 40%;
+    left: 10px;
+    transform: rotate(180deg);
+  }
+  .next{
+    position: absolute;
+    font-size: 3.5rem;
+    top: 40%;
+    right: 10px;
+  }
   .close{
     position: absolute;
     top: 10px;
