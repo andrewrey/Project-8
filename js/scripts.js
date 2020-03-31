@@ -3,6 +3,8 @@
 const empUrl = "https://randomuser.me/api/?results=12";
 const modalCover = document.querySelector('.cover');
 const cardHolder = document.querySelector('.card-holder');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
 let employees = [];
 
 
@@ -40,8 +42,9 @@ function createCards(data){
 function createModal(index){
   let {name:{first, last}, location:{street:{number, name:streetName }, city, state,country, postcode}, email, dob, phone, picture:{large}} = employees[index];
   let birthdate = new Date(dob.date);
+  console.log(index);
   let html = `
-    <div class="modal">
+    <div class="modal" data-index="${index}">
       <div class="prev">&#8227</div>
       <div class="next">&#8227</div>
       <button class="close">X</button>
@@ -83,5 +86,25 @@ modalCover.addEventListener('click', (e)=>{
   if(e.target.className === "close"){
     console.log('hello');
     e.target.parentNode.parentNode.classList.add('hidden');
+  }
+});
+
+modalCover.addEventListener('click', (e)=>{
+  if(e.target.className === "prev"){
+    let currentIndex = parseInt(e.target.parentNode.getAttribute('data-index'));
+    if (currentIndex != 0){
+      let newIndex = currentIndex - 1;
+      console.log(newIndex);
+      createModal(newIndex);
+    }
+
+  } else if (e.target.className === "next"){
+    let currentIndex = parseInt(e.target.parentNode.getAttribute('data-index'));
+    if (currentIndex != employees.length - 1){
+      let newIndex = currentIndex + 1;
+      console.log(newIndex);
+      createModal(newIndex);
+    }
+
   }
 });
