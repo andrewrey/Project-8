@@ -28,7 +28,7 @@ function createCards(data){
       <div class="card" data-index="${index}">
         <img src="${employee.picture.large}" alt="Headshot of ${employee.name.first}">
         <div class="card-text">
-          <h2>${employee.name.first} ${employee.name.last}</h2>
+          <h2 class="employeeName">${employee.name.first} ${employee.name.last}</h2>
           <p>${employee.email}</p>
           <p>${employee.location.city}</p>
         </div>
@@ -37,36 +37,14 @@ function createCards(data){
   });
   cardHolder.innerHTML = html;
 }
-
-// function that updates the cards when user filters by country
-function updatedCards(data){
-  let updatedEmployees = data;
-  console.log("global",employees);
-  let html = '';
-  updatedEmployees.forEach((employee, index)=>{
-    html += `
-      <div class="card" data-index="${index}">
-        <img src="${employee.picture.large}" alt="Headshot of ${employee.name.first}">
-        <div class="card-text">
-          <h2>${employee.name.first} ${employee.name.last}</h2>
-          <p>${employee.email}</p>
-          <p>${employee.location.city}</p>
-        </div>
-      </div>
-    `;
-  });
-  cardHolder.innerHTML = html;
-}
-
-
-
 
 
 // Function used to create Modal. Takes in index number of card for reference to which employee object
 function createModal(index){
   let {name:{first, last}, location:{street:{number, name:streetName }, city, state,country, postcode}, email, dob, phone, picture:{large}} = employees[index];
   let birthdate = new Date(dob.date);
-  console.log(index);
+  let cards = document.querySelectorAll('.card');
+  cards.forEach(card=>card.classList.remove('hidden'));
   let html = `
     <div class="modal" data-index="${index}">
       <div class="prev">&#8227</div>
@@ -87,6 +65,9 @@ function createModal(index){
   modalCover.classList.remove("hidden");
 
 }
+
+
+
 
 
 getEmployees(empUrl)
@@ -136,13 +117,13 @@ modalCover.addEventListener('click', (e)=>{
 
 searchInput.addEventListener('keyup', (e)=>{
   let text = e.target.value.toLowerCase();
-  let filteredData = employees.filter(employee =>{
-        let firstName = employee.name.first.toLowerCase();
-        let lastName = employee.name.last.toLowerCase();
-        let fullName = `${firstName} ${lastName}`;
-        return fullName.includes(text);
-      });
-  console.log("filtered",filteredData)
-  updatedCards(filteredData);
+  let employeeNames = document.querySelectorAll('.employeeName');
+  employeeNames.forEach(employee=>{
+    if (!employee.textContent.toLowerCase().includes(text)){
+      console.log(employee.parentNode.parentNode);
+      employee.parentNode.parentNode.classList.add('hidden');
+    }
+  })
+
   
 }) 

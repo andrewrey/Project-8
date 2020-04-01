@@ -324,10 +324,8 @@ template {
   grid-template-columns: 1fr;
   grid-template-rows: 80px minmax(250px, auto) 100px;
   grid-gap: 5px;
+  height: 100vh;
   grid-template-areas: "head" "main" "foot"; }
-  @media (min-width: 1284px) {
-    .grid-wrap {
-      height: 100vh; } }
 
 header {
   grid-area: head;
@@ -335,7 +333,8 @@ header {
 
 main {
   grid-area: main;
-  background-color: #FEF8FF; }
+  background-color: #FEF8FF;
+  overflow: scroll; }
 
 footer {
   grid-area: foot;
@@ -448,6 +447,9 @@ main {
     border-radius: 50%;
     height: 80px;
     margin-left: 10px; }
+
+.hidden {
+  display: none; }
 
 /* ============================================= */
 /*              Footer                           */

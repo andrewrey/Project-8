@@ -12,6 +12,10 @@ main{
   grid-gap: 25px;
 }
 
+
+
+
+
 .card{
   border: 1px solid grey;
   display: flex;
@@ -32,4 +36,8 @@ main{
     margin-left: 10px;
   }
 
+}
+
+.hidden {
+  display: none;
 }
