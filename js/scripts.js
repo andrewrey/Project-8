@@ -1,4 +1,4 @@
-
+// page variables ///
 const searchInput = document.querySelector('.container input');
 const empUrl = "https://randomuser.me/api/?nat=us,gb,ca&results=12";
 const modalCover = document.querySelector('.cover');
