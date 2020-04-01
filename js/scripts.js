@@ -123,6 +123,9 @@ searchInput.addEventListener('keyup', (e)=>{
       console.log(employee.parentNode.parentNode);
       employee.parentNode.parentNode.classList.add('hidden');
     }
+    if(text === ""){
+      employee.parentNode.parentNode.classList.remove('hidden');
+    }
   })
 
   
